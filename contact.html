@@ -12,6 +12,17 @@
   <link href="css/plugins.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
+
+  <!-- Maps -->
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+  type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css"
+  href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+
 </head>
 <link rel="shortcut icon" href="images/favicon" type="image/x-icon" />
 
@@ -180,10 +191,35 @@
 
             </div>
 
-            <!-- Google map sensor -->
+            <!-- Google map sensor
             <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
             <div class="map m-t-30" data-map-address="Jubail, Saudi Arabia" data-map-zoom="10" data-map-icon="images/markers/marker2.png" data-map-type="ROADMAP"></div>
-            <!-- Google map sensor -->
+            Google map sensor -->
+
+            <div style="width: 640px; height: 480px" id="mapContainer"></div>
+            <script>
+            // Initialize the platform object:
+            var platform = new H.service.Platform({
+              'apikey': 'DgeAsomK8FH-1GyveP2CAEo0PT6aLnjrMonRMcDthh0'
+            });
+
+            // Obtain the default map types from the platform object
+            var maptypes = platform.createDefaultLayers();
+
+            // Instantiate (and display) a map object:
+            var map = new H.Map(
+              document.getElementById('mapContainer'),
+              maptypes.vector.normal.map,
+              {
+                zoom: 10,
+                center: { lng: 49.65, lat: 26.98 }
+              });
+
+              // Create the default UI:
+              var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+
+              </script>
 
           </div>
         </div>
@@ -244,6 +280,8 @@
   <!--Plugins-->
   <script src="js/jquery.js"></script>
   <script src="js/plugins.js"></script>
+
+
 
   <!--Template functions-->
   <script src="js/functions.js"></script>
